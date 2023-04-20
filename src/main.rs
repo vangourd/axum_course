@@ -7,11 +7,14 @@ use axum::extract::{Query, Path};
 use axum::routing::{get, get_service};
 use axum::response::{Html, IntoResponse};
 use serde::Deserialize;
+use tower_http::services::ServeDir;
 
 #[tokio::main]
 async fn main() {
     
-    let routes_all = Router::new().merge(routes_hello());
+    let routes_all = Router::new()
+        .merge(routes_hello())
+        .fallback_service(routes_static());
 
     // region: ---Start Server
     let addr = SocketAddr::from(([127,0,0,1], 8080));
@@ -31,7 +34,7 @@ fn routes_static() -> Router {
 fn routes_hello() -> Router {
     Router::new()
         .route("/hello",get(handler_hello))
-        .route("/hello2/:name",get(handler_hello2));
+        .route("/hello2/:name",get(handler_hello2))
 }
 
 #[derive(Debug, Deserialize)]

@@ -12,6 +12,7 @@ tokio = { version = "1", features = ["full"]}
 
 axum = "0.6"
 watch = "0.2.2"
+tower-http = { version="0.4.0", features = ["fs"] }
 
 [dev-dependencies]
 anyhow="1"

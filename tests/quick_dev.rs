@@ -7,6 +7,8 @@ async fn quick_dev() -> Result<()> {
     
     hc.do_get("/hello2/Mike").await?.print().await?;
 
+    
+
     let req_login = hc.do_post(
         "/api/login", 
         json!({
@@ -15,6 +17,9 @@ async fn quick_dev() -> Result<()> {
         })
     );
     req_login.await?.print().await?;
+
+
+    hc.do_get("/hello2/Mike").await?.print().await?;
     
     Ok(())
 }

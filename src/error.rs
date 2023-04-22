@@ -9,6 +9,10 @@ pub type Result<T> = core::result::Result<T, Error>;
 #[derive(Debug)]
 pub enum Error {
     LoginFail,
+
+    // start region: --- Model errors
+    TicketDeleteFailIdNotFound { id: u64 }, 
+    // end region: --- Model errors
 }
 
 impl IntoResponse for Error {

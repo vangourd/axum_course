@@ -12,6 +12,7 @@ pub enum Error {
 
     // start region: --- Auth errors
     AuthFailNoAuthTokenCookie,
+    AuthFailTokenWrongFormat,
     // end region: --- Auth errors
 
     // start region: --- Model errors

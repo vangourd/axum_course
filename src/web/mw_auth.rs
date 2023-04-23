@@ -7,7 +7,7 @@ pub async fn mw_require_auth<B>(
     cookies: Cookies,
     req: Request<B>, 
     next: Next<B>
-) -> Result<Response> {
+) -> Result<Response, Error> {
     let auth_token = cookies.get(AUTH_TOKEN).map(|c| c.value().to_string());
 
     // TODO: Real auth-token parsing & validation

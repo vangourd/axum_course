@@ -6,17 +6,19 @@ use serde:: Serialize;
 
 pub type Result<T> = core::result::Result<T, Error>;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Error {
     LoginFail,
 
     // start region: --- Auth errors
     AuthFailNoAuthTokenCookie,
     AuthFailTokenWrongFormat,
+    AuthFailCtxNotInRequestExt, 
     // end region: --- Auth errors
 
     // start region: --- Model errors
-    TicketDeleteFailIdNotFound { id: u64 }, 
+    TicketDeleteFailIdNotFound { id: u64 },
+
     // end region: --- Model errors
 }
 

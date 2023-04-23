@@ -33,7 +33,7 @@ async fn main() -> Result<()> {
 
     // region: ---Start Server
     let addr = SocketAddr::from(([127,0,0,1], 8080));
-    println!("->> LISTENING ON {addr}\n");
+    println!("->> LISTENING ON http://{addr}\n");
     axum::Server::bind(&addr)
         .serve(routes_all.into_make_service())
         .await

@@ -61,13 +61,11 @@ impl<S: Send + Sync> FromRequestParts<S> for Ctx {
     async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Error> {
         println!("->> {:<12} - Ctx", "EXTRACTOR");
 
-        let d = parts
+        parts
             .extensions
             .get::<Result<Ctx, Error>>()
             .ok_or(Error::AuthFailCtxNotInRequestExt)?
-            .clone();
-
-        d
+            .clone()
 
     }
 }
